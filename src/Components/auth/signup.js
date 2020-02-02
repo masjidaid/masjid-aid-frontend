@@ -1,15 +1,17 @@
+/* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { validate } from 'indicative/validator';
 import './signIn.css';
 
-class signIn extends Component {
+class signUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // eslint-disable-next-line react/no-unused-state
+      firstName: '',
+      lastName: '',
       email: '',
-      // eslint-disable-next-line react/no-unused-state
       password: '',
+      phoneNumber: '',
       errors: {}
     };
   }
@@ -22,12 +24,20 @@ class signIn extends Component {
 
   handleValidation = () => {
     const rules = {
+      firstName: 'required|min:3',
+      lastName: 'required|min:3',
       email: 'required|email',
-      password: 'required',
+      password: 'required|min:8',
+      phoneNumber: 'required|min:3',
+
     };
     const messages = {
       required: (field) => `${field} is required`,
+      'firstname.min': 'firstname is too short',
+      'lastname.min': 'firstname is too short',
       'email.email': 'Please enter a valid email address',
+      'password.min': 'Password is too short',
+      'phonenumber.min': 'Password is too short',
     };
     const data = this.state;
 
@@ -38,7 +48,6 @@ class signIn extends Component {
         errors.forEach((error) => {
           formattedError[error.field] = error.message;
         });
-
         this.setState({ errors: formattedError });
       });
   }
@@ -68,6 +77,36 @@ class signIn extends Component {
 
           <form method="post" onSubmit={this.handleSubmit}>
             <div>
+              <label htmlFor="firstName">First Name</label>
+              <br />
+              <input
+                type="text"
+                id="firstname"
+                placeholder="First Name"
+                // required
+                onChange={this.handleChange}
+              />
+              <br />
+              <label htmlFor="error" className="error">
+                {errors.firstName ? errors.firstName : ''}
+              </label>
+            </div>
+            <div>
+              <label htmlFor="email">last Name</label>
+              <br />
+              <input
+                type="text"
+                id="lastname"
+                placeholder="Last Name"
+                // required
+                onChange={this.handleChange}
+              />
+              <br />
+              <label htmlFor="error" className="error">
+                {errors.lastName ? errors.lastName : ''}
+              </label>
+            </div>
+            <div>
               <label htmlFor="email">Email Address</label>
               <br />
               <input
@@ -80,6 +119,22 @@ class signIn extends Component {
               <br />
               <label htmlFor="error" className="error">
                 {errors.email ? errors.email : ''}
+              </label>
+            </div>
+
+            <div>
+              <label htmlFor="email">Phone Number</label>
+              <br />
+              <input
+                type="tel"
+                id="phonenumber"
+                placeholder="Phone Number"
+                // required
+                onChange={this.handleChange}
+              />
+              <br />
+              <label htmlFor="error" className="error">
+                {errors.phoneNumber ? errors.phoneNumber : ''}
               </label>
             </div>
 
@@ -97,14 +152,15 @@ class signIn extends Component {
               <label htmlFor="error" className="error">
                 {errors.password ? errors.password : ''}
               </label>
-              <br />
-              <a href="/">
-                <small> Forgot Your Password</small>
-              </a>
             </div>
 
             <div>
-              <button type="submit" id="login">Log In Masjidaid </button>
+              <input type="checkbox" />
+              <p>Sign me up for he masjid aid newsletter</p>
+            </div>
+
+            <div>
+              <button type="submit" id="signup">Sign up </button>
             </div>
           </form>
 
@@ -113,4 +169,4 @@ class signIn extends Component {
     );
   }
 }
-export default signIn;
+export default signUp;
