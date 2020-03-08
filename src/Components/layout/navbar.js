@@ -10,7 +10,7 @@ class Navbar extends Component {
           <ul className="left-navbar-items">
             <li><Link className="item" to="/">Explore</Link></li>
             <li><Link className="item" to="/">Campaign</Link></li>
-            <li><Link className="item" to="/">Search</Link></li>
+            <li><Link className="item" to="/">List Masjids</Link></li>
           </ul>
 
           <div className="masjid-logo">
@@ -18,10 +18,10 @@ class Navbar extends Component {
           </div>
 
           <ul className="right-navbar-items">
-            <li><Link className="item" to="/">How it works</Link></li>
+            <li><Link className="item" to="/register-masjid">Register a Masjid</Link></li>
             <li><Link className="item" to="/">About</Link></li>
             <li>
-              <Link className="item" to="/">
+              <Link className="item" to="/sign-in">
                 <button type="button" className="btn btn-success btn-lg">Sign in</button>
               </Link>
             </li>

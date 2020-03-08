@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { validate } from 'indicative/validator';
-import './signIn.css';
+import './signup.scss';
 
 class signUp extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class signUp extends Component {
 
   handleChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
@@ -62,18 +63,11 @@ class signUp extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="signin">
-        <h1>WELCOME BACK</h1>
+      <div className="signup-wrapper">
+        <h1>WELCOME</h1>
         <hr />
         <div>
-          <h3>Log In to Continue</h3>
-          <div>
-            <button type="button"> Continue with Facebook </button>
-            <br />
-            <small> We will never post without your consent. </small>
-          </div>
-          <h3>Or</h3>
-          <button type="button">Continue with Gmail</button>
+          <h3>Sign up to Masjidaid</h3>
 
           <form method="post" onSubmit={this.handleSubmit}>
             <div>
@@ -81,7 +75,7 @@ class signUp extends Component {
               <br />
               <input
                 type="text"
-                id="firstname"
+                name="firstname"
                 placeholder="First Name"
                 // required
                 onChange={this.handleChange}
@@ -96,7 +90,7 @@ class signUp extends Component {
               <br />
               <input
                 type="text"
-                id="lastname"
+                name="lastname"
                 placeholder="Last Name"
                 // required
                 onChange={this.handleChange}
@@ -111,7 +105,7 @@ class signUp extends Component {
               <br />
               <input
                 type="email"
-                id="email"
+                name="email"
                 placeholder="Email"
                 // required
                 onChange={this.handleChange}
@@ -127,7 +121,7 @@ class signUp extends Component {
               <br />
               <input
                 type="tel"
-                id="phonenumber"
+                name="phonenumber"
                 placeholder="Phone Number"
                 // required
                 onChange={this.handleChange}
@@ -143,7 +137,7 @@ class signUp extends Component {
               <br />
               <input
                 type="password"
-                id="password"
+                name="password"
                 placeholder="Password"
                 onChange={this.handleChange}
               />
@@ -154,17 +148,24 @@ class signUp extends Component {
               </label>
             </div>
 
-            <div>
+            <div className="newsletter">
               <input type="checkbox" />
-              <p>Sign me up for he masjid aid newsletter</p>
+              {' '}
+              &nbsp;
+              <span>Sign me up for masjidaid newsletter</span>
             </div>
 
             <div>
-              <button type="submit" id="signup">Sign up </button>
+              <button type="submit" className="btn btn-lg btn-success" id="signup">Sign up </button>
             </div>
           </form>
 
         </div>
+
+        <hr />
+        Already have an account? &nbsp;
+        <Link to="/sign-in">Signin</Link>
+
       </div>
     );
   }

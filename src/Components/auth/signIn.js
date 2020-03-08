@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { validate } from 'indicative/validator';
-import './signIn.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { library } from '@fortawesome//fontawesome-svg-core';
+import './signIn.scss';
+
+library.add(faFacebook);
 
 class signIn extends Component {
   constructor(props) {
@@ -16,7 +23,7 @@ class signIn extends Component {
 
   handleChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
@@ -53,26 +60,38 @@ class signIn extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="signin">
+      <div className="signin-wrapper">
         <h1>WELCOME BACK</h1>
         <hr />
-        <div>
-          <h3>Log In to Continue</h3>
+        <div className="signin">
+          <h3 className="continue">Log In to Continue</h3>
           <div>
-            <button type="button"> Continue with Facebook </button>
+            <Link to="/">
+              <button type="button" className="btn btn-primary btn-lg">
+                <FontAwesomeIcon icon={faFacebook} />
+                &nbsp;
+                Continue with Facebook
+              </button>
+            </Link>
             <br />
             <small> We will never post without your consent. </small>
           </div>
           <h3>Or</h3>
-          <button type="button">Continue with Gmail</button>
+          <Link to="/">
+            <button type="button" className="btn btn-light btn-lg">
+              <FontAwesomeIcon icon={faGoogle} />
+              &nbsp;
+              Continue with Gmail
+            </button>
+          </Link>
 
           <form method="post" onSubmit={this.handleSubmit}>
-            <div>
+            <div className="email">
               <label htmlFor="email">Email Address</label>
               <br />
               <input
                 type="email"
-                id="email"
+                name="email"
                 placeholder="Email"
                 // required
                 onChange={this.handleChange}
@@ -83,32 +102,41 @@ class signIn extends Component {
               </label>
             </div>
 
-            <div>
+            <div className="password">
               <label htmlFor="password">Password</label>
               <br />
               <input
                 type="password"
-                id="password"
+                name="password"
                 placeholder="Password"
                 onChange={this.handleChange}
               />
               <br />
+              <Link to="/">
+                <small> Forgot Your Password</small>
+              </Link>
 
+              <br />
               <label htmlFor="error" className="error">
                 {errors.password ? errors.password : ''}
               </label>
               <br />
-              <a href="/">
-                <small> Forgot Your Password</small>
-              </a>
+
             </div>
 
             <div>
-              <button type="submit" id="login">Log In Masjidaid </button>
+              <button type="submit" id="login" className="btn btn-success btn-lg">
+                <FontAwesomeIcon icon={faDoorOpen} />
+                &nbsp;
+                Log In Masjidaid
+              </button>
             </div>
           </form>
 
         </div>
+        <hr />
+        Don&lsquo;t have an account? &nbsp;
+        <Link to="/sign-up">SignUp</Link>
       </div>
     );
   }
