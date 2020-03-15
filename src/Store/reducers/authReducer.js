@@ -1,10 +1,24 @@
-export default (state = {}, action) => {
+const initState = {
+  authError: null
+};
+
+const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'SIMPLE_ACTION':
+    case 'SIGNUP_SUCCESS':
+      console.log('signup success');
       return {
-        result: action.payload
+        ...state,
+        authError: null
+      };
+    case 'SIGNUP_FAILURE':
+      console.log('signup failed');
+      return {
+        ...state,
+        authError: action.error
       };
     default:
       return state;
   }
 };
+
+export default authReducer;

@@ -1,0 +1,33 @@
+.footer {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 200px;
+  background: black;
+  .footer-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 20px;
+    color: rgb(253, 253, 253);
+    
+    .footer-icon {
+      img {
+        height: 150px;
+        width: 150px;
+        background-color: rgb(255, 255, 255);
+        padding: 20px;
+
+      }
+    }
+    ul {
+      li {
+        margin-left: 10px;
+        Link {
+          color: white;
+        }
+      }
+    }
+  }
+}

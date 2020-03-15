@@ -1,10 +1,14 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { validate } from 'indicative/validator';
 import './signup.scss';
+import { signUp } from '../../Store/actions/authAction';
 
-class signUp extends Component {
+
+class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,12 +60,17 @@ class signUp extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.handleValidation();
+    // this.handleValidation();
+    // eslint-disable-next-line react/destructuring-assignment
+    this.props.signUp(this.state);
   };
 
 
   render() {
     const { errors } = this.state;
+    const { authError } = this.props;
+    console.log(authError);
+
     return (
       <div className="signup-wrapper">
         <h1>WELCOME</h1>
@@ -170,4 +179,14 @@ class signUp extends Component {
     );
   }
 }
-export default signUp;
+
+const mapStateToProps = (state) => ({
+  auth: state,
+  authError: state.authReducer.authError
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  signUp: (cred) => dispatch(signUp(cred))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

@@ -11,7 +11,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cards: [1, 2, 3, 4, 5],
+      cards: [1, 2, 3, 4, 5, 6, 7, 8, 9, 20],
     };
   }
 
@@ -26,8 +26,20 @@ class Home extends Component {
             <q>And the mosques are for Allah, so   not invoke with Allah anyone: Q(72:18)</q>
             <br />
 
-            <Link to="/"><button type="button" className="btn btn-success btn-lg btn-item"> Raise Funds</button></Link>
+            <a href="#popup1"><button type="button" className="btn btn-success btn-lg btn-item"> Raise Funds</button></a>
+
           </div>
+
+          {/* <div id="popup1" className="overlay">
+            <div className="popup">
+              <h2>Here i am</h2>
+              <a className="close" href="/">&times;</a>
+              <div className="content">
+                Thank to pop me out of that button, but now i am done so you can close this window.
+              </div>
+            </div>
+          </div> */}
+
         </div>
 
         <div className="campaigns">
@@ -41,6 +53,7 @@ class Home extends Component {
                   <img className="campaign-img" src={topImage} alt="Card img cap" />
                   <div className="campaign-body text-center">
                     <h5 className="campaign-title">Card title</h5>
+                    <progress max="100" value="70" />
                     <p className="campaign-description">
                       Some quick example text to build on the card title and make up the bulk of the card content.
                     </p>
@@ -57,6 +70,8 @@ class Home extends Component {
             </p>
           </Link>
         </div>
+
+        <hr className=" divider div-transparent div-stopper" />
 
         <div className="stories">
           {/* <h1></h1> */}

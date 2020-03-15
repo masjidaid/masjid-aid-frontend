@@ -10,14 +10,14 @@ export default class RegisterMasjid extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // masjidName: '',
-      // addressLn1: '',
-      // addressLn2: '',
-      // city: '',
-      // state: '',
-      // country: '',
-      // zipCode: '',
-      // images: '',
+      masjidName: '',
+      addressLn1: '',
+      addressLn2: '',
+      city: '',
+      state: '',
+      country: '',
+      zipCode: '',
+      images: '',
       errors: {}
     };
   }
@@ -221,18 +221,20 @@ export default class RegisterMasjid extends Component {
             </form>
           </div>
 
-          {/* <div className="column-two">
-            <h1> Column 2</h1>
-          </div>
-        </div> */}
+          <div className="column-two">
+            <h1> Register your masjid</h1>
 
-          <hr />
-          <p className="last-description">
-          Checkout registered Masjids &nbsp;
-            <Link to="/masjids">here</Link>
-          </p>
+            <h3>وأن المساجد لله فلا تدعوا مع الله أحد</h3>
+          </div>
         </div>
+
+        <hr />
+        <p className="last-description">
+          Checkout registered Masjids &nbsp;
+          <Link to="/masjids">here</Link>
+        </p>
       </div>
+      // </div>
     );
   }
 }
